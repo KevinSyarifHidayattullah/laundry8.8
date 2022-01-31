@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaketController;
+use App\Http\Controllers\UserrController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\OutletController;
 
@@ -21,3 +22,4 @@ Route::resource('home',HomeController::class,);
 Route::resource('outlet',OutletController::class,);
 Route::resource('member',MemberController::class,);
 Route::resource('paket',PaketController::class,);
+Route::resource('userr',UserrController::class,);
