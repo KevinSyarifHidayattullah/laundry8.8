@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Outlet;
 use App\Models\Paket;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request;    
 
 class PaketController extends Controller
 {
@@ -14,6 +15,7 @@ class PaketController extends Controller
      */
     public function index()
     {
+        $data['outlet'] = Outlet::all();
         $data['paket'] = Paket::all();
         return view('paket/index', ['paket'=>Paket::all()]);
     }
@@ -65,7 +67,7 @@ class PaketController extends Controller
      * @param  \App\Models\Paket  $paket
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request , Paket $paket ,$id)
+    public function edit(Request $request , Paket $paket ,$id) 
     {
         $validated = $request->validate([
             'nama' => 'required',

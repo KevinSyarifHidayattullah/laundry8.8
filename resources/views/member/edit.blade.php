@@ -39,7 +39,7 @@
                 <div class="form-group">
                   <label for="jenis_kelamin">Jenis kelamin</label>
                   <div class="container">
-                  <select class="form-control col-sm-5" id="jenis_kelamin" name="jenis_kelamin">
+                  <select class="form-control col-sm-5" id="jenis_kelamin" value="{{ $model->jenis_kelamin }}" name="jenis_kelamin" name="jenis_kelamin">
                     <option value="L">L</option>
                     <option value="P">P</option>
                 </select>

@@ -94,6 +94,7 @@ class MemberController extends Controller
         $model = member::find($id);
         $model->nama = $request->nama;
         $model->alamat = $request->alamat;
+        $model->jenis_kelamin = $request->jenis_kelamin;
         $model->tlp = $request->tlp;
         $model->save();
 

@@ -15,7 +15,11 @@
               <div class="form-group">
                 <label class="mt-2" for="outlet_id">Id Outlet</label>
                 <div class="container">
-                <input type="text" class="form-control col-sm-9" id="outlet_id" placeholder="" name="outlet_id">
+                <select  class="form-control col-sm-9" id="outlet_id" placeholder="" name="outlet_id">
+                @foreach ($outlet as $o)
+                   <option value="{{ $o->id }}"><td>{{ $o->nama }}</td></option>
+                @endforeach
+                </select>
                 </div>
               </div>
             </div>
