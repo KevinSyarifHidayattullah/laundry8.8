@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Userr;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreUserrRequest;
+use App\Http\Requests\UpdateUserrRequest;
+use App\Models\outlet;
 
 class UserrController extends Controller
 {
@@ -15,7 +17,8 @@ class UserrController extends Controller
     public function index()
     {
         $data['userr'] = Userr::all();
-        return view('userr/index', ['userr'=>Userr::all()]);
+        $data['outlets'] = outlet::all();
+        return view('userr/index', $data);
     }
 
     /**
@@ -25,28 +28,27 @@ class UserrController extends Controller
      */
     public function create()
     {
-        //
+    //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreUserrRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUserrRequest $request)
     {
         $validated = $request->validate([
-            'nama' => 'required',
-            'username' => 'required',
-            'password' => 'required',
-            'id_outlet' => 'required',
-            'role' => 'required',
-        ]);
+             'nama' => 'required',
+             'username' => 'required',
+             'password' => 'required',
+             'id_outlet' => 'required',
+             'role' => 'required'
+         ]);
 
         $input = Userr::create($validated);
-
-        if($input) return redirect('userr')->with('success', 'Data berhasil diiinput');
+        if($input)return redirect('userr')->with('succes','Data berhasil diinput');
     }
 
     /**
@@ -66,55 +68,46 @@ class UserrController extends Controller
      * @param  \App\Models\Userr  $Userr
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request , Userr $userr ,$id)
+    public function edit(Userr $Userr)
     {
-        $validated = $request->validate([
-            'nama' => 'required',
-            'username' => 'required',
-            'password' => 'required',
-            'id_outlet' => 'required',
-            'role' => 'required',
-        ]);
-        // dd($validated);
-
-        $update =$userr->find($id)->update($request->all());
-
-        // $input = Member::where('id', $Userr->id)
-        //         ->update($validated);
-
-        if($update) return redirect('userr')->with('success', 'Data berhasil DI Upadate');
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\UpdateUserrRequest  $request
      * @param  \App\Models\Userr  $Userr
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateUserrRequest $request, Userr $Userr)
     {
-        $model = Userr::find($id);
-        $model->nama = $request->nama;
-        $model->username = $request->username;
-        $model->password = $request->password;
-        $model->id_outlet = $request->id_outlet;
-        $model->role = $request->role;
-        $model->save();
+        $ValidatedData = $request->validate([
 
-        return redirect('userr');
+            'nama' => 'required',
+            'username' => 'required',
+            'password' => 'required',
+            'id_outlet' => 'required',
+            'role' => 'required'
+        ]);
+
+
+        Userr::where('id', $Userr->id)
+                ->update($ValidatedData);
+
+
+        return redirect('Userr')->with('succes','Data Has Been Updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Userr  $userr
+     * @param  \App\Models\Userr  $Userr
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(userr $userr)
     {
-        Userr::find($id)->delete();
-
-        return redirect('userr')->with('success', 'Userr deleted');
+        Userr::destroy($userr->id);
+        return redirect('userr')->with('succes'.'Data Has Been Deleted!');
     }
 }

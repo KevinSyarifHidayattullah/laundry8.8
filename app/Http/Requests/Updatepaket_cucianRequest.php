@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateoutletRequest extends FormRequest
+class Updatepaket_cucianRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

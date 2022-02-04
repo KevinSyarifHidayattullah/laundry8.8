@@ -56,7 +56,7 @@
                   </li>
                   <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="/paket">Paket</a></li>
+                      <li><a href="/paket_cucian">Paket</a></li>
                       <li><a href="/outlet">Outlet</a></li>
                       <li><a href="/member">Member</a></li>
                       <li><a href="/userr">User</a></li>

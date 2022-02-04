@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Outlet;
-use Illuminate\Http\Request;
+use App\Models\outlet;
+use App\Http\Requests\StoreoutletRequest;
+use App\Http\Requests\UpdateoutletRequest;
 
 class OutletController extends Controller
 {
@@ -14,8 +15,8 @@ class OutletController extends Controller
      */
     public function index()
     {
-        $data['outlet'] = Outlet::all();
-        return view('outlet/index', ['outlet'=>Outlet::all()]);
+        $data['outlet'] = Outlet::All();
+        return view('outlet/index' , $data);
     }
 
     /**
@@ -31,29 +32,32 @@ class OutletController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreoutletRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreoutletRequest $request)
     {
-        $validated = $request->validate([
+
+        //validasi
+         $validated = $request->validate([
+             
             'nama' => 'required',
-            'alamat' => 'required',
-            'tlp' => 'required',
-        ]);
+             'alamat' => 'required',
+             'tlp' => 'required'
+         ]);
 
-        $input = Outlet::create($validated);
 
-        if($input) return redirect('outlet')->with('success', 'Data berhasil diiinput');
-    }
+         $input = Outlet::create($validated);
+
+         if($input) return redirect('outlet')->with('success', 'Data berhasil diiinput');    }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Outlet  $outlet
+     * @param  \App\Models\outlet  $outlet
      * @return \Illuminate\Http\Response
      */
-    public function show(Outlet $outlet)
+    public function show(outlet $outlet)
     {
         //
     }
@@ -61,51 +65,47 @@ class OutletController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Outlet  $barang
+     * @param  \App\Models\outlet  $outlet
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request , Outlet $outlet ,$id)
+    public function edit(outlet $outlet)
     {
-        $validated = $request->validate([
-            'nama' => 'required',
-            'alamat' => 'required',
-            'jenis_kelamin' => 'required',
-            'tlp' => 'required',
-        ]);
-
-        $update =$outlet->find($id)->update($request->all());
-
-        if($update) return redirect('outlet')->with('success', 'Data berhasil DI Upadate');
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Outlet  $outlet
+     * @param  \App\Http\Requests\UpdateoutletRequest  $request
+     * @param  \App\Models\outlet  $outlet
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateoutletRequest $request, outlet $outlet)
     {
-        $model = outlet::find($id);
-        $model->nama = $request->nama;
-        $model->alamat = $request->alamat;
-        $model->tlp = $request->tlp;
-        $model->save();
+        $validatedData = $request->validate([
 
-        return redirect('outlet');
+            'nama' => 'required',
+            'alamat' => 'required',
+            'tlp' => 'required',
+
+        ]);
+
+        Outlet::where('id', $outlet->id)
+            ->update($validatedData);
+
+            return redirect('outlet')->with('succes'.'Data Has Been Updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Outlet  $outlet
+     * @param  \App\Models\outlet  $outlet
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(outlet $outlet)
     {
-        outlet::find($id)->delete();
-
-        return redirect('outlet')->with('success', 'outlet deleted');
+        outlet::destroy($outlet->id);
+        $outlet->delete();
+       return redirect('outlet')->with('succes'.'Data Has Been Deleted!');
     }
 }

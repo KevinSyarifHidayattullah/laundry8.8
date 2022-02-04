@@ -12,7 +12,7 @@ class Paket extends Model
     protected $primaryKey ='id';
     public $incrementing = true;
     protected $table ='paket';
-    protected $fillable = ['outlet_id','jenis','nama_paket','harga'];
+    protected $fillable = ['id_outlet','jenis','nama_paket','harga'];
 
     public function outlet()
     {

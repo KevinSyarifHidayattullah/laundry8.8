@@ -7,6 +7,7 @@ use App\Http\Controllers\PaketController;
 use App\Http\Controllers\UserrController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\OutletController;
+use App\Http\Controllers\PaketCucianController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,11 +20,13 @@ use App\Http\Controllers\OutletController;
 |
 */
 
-Route::resource('home',HomeController::class,);
-Route::resource('outlet',OutletController::class,);
-Route::resource('member',MemberController::class,);
-Route::resource('paket',PaketController::class,);
-Route::resource('userr',UserrController::class,);
+Route::resource('home',HomeController::class)->middleware('auth');
+Route::resource('outlet',OutletController::class)->middleware('auth');
+Route::resource('member',MemberController::class)->middleware('auth');
+Route::resource('paket',PaketController::class)->middleware('auth');
+Route::resource('userr',UserrController::class)->middleware('auth');
+
+Route::resource('paket_cucian', PaketCucianController::class);
 
  
 Route::get('/', [AuthController::class, 'showFormLogin'])->name('login');
@@ -33,5 +36,5 @@ Route::get('register', [AuthController::class, 'showFormRegister'])->name('regis
 Route::post('register', [AuthController::class, 'register']);
  
  
-    Route::get('home', [HomeController::class, 'index'])->name('home');
+    Route::get('home', [HomeController::class, 'index'])->name('home')->middleware('auth');
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');

@@ -37,14 +37,14 @@
             @endif
         <div>
 
-        @include('userr/list-all')
+        @include('paket_cucian/list-all')
 
         </div>
     </div>
  <!--/card body-->
 
 <!--/card-->
-@include('userr/form')
+@include('paket_cucian/form')
 @endsection
 @push('script')
 <script>

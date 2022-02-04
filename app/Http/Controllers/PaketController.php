@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Outlet;
 use App\Models\Paket;
+use App\Http\Requests\StorepaketRequest;
+use App\Http\Requests\Updatepaket_cucianRequest;
 use Illuminate\Http\Request;    
 
 class PaketController extends Controller
@@ -36,10 +38,10 @@ class PaketController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorepaketRequest $request)
     {
         $validated = $request->validate([
-            'outlet_id' => 'required',
+            'id_outlet' => 'required',
             'jenis' => 'required',
             'nama_paket' => 'required',
             'harga' => 'required',
@@ -95,7 +97,7 @@ class PaketController extends Controller
     public function update(Request $request, $id)
     {
         $model = paket::find($id);
-        $model->outlet_id = $request->outlet_id;
+        $model->id_outlet = $request->id_outlet;
         $model->jenis = $request->jenis;
         $model->nama_paket = $request->nama_paket;
         $model->harga = $request->harga;
