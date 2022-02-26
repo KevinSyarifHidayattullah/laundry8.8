@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\paket_cucian;
+use App\Models\paketCucian;
 use App\Http\Requests\Storepaket_cucianRequest;
 use App\Http\Requests\Updatepaket_cucianRequest;
 use App\Models\outlet;
@@ -16,9 +16,9 @@ class PaketCucianController extends Controller
      */
     public function index()
     {
-        $data['paket_cucian'] = Paket_Cucian::all();
-        $data['outlets'] = outlet::all();
-        return view('paket_cucian/index', $data);
+        $data['paket_cucian'] = paketCucian::all();
+        $outlet['outlet'] = outlet::all();
+        return view('paket_cucian\index', $data, $outlet);
     }
 
     /**
@@ -46,7 +46,7 @@ class PaketCucianController extends Controller
              'harga' => 'required'
          ]);
 
-        $input = Paket_Cucian::create($validated);
+        $input = paketCucian::create($validated);
         if($input)return redirect('paket_cucian')->with('succes','Data berhasil diinput');
     }
 
@@ -56,7 +56,7 @@ class PaketCucianController extends Controller
      * @param  \App\Models\paket_cucian  $paket_cucian
      * @return \Illuminate\Http\Response
      */
-    public function show(paket_cucian $paket_cucian)
+    public function show(paketCucian $paket_cucian)
     {
         //
     }
@@ -67,7 +67,7 @@ class PaketCucianController extends Controller
      * @param  \App\Models\paket_cucian  $paket_cucian
      * @return \Illuminate\Http\Response
      */
-    public function edit(paket_cucian $paket_cucian)
+    public function edit(paketCucian $paket_cucian)
     {
         //
     }
@@ -79,7 +79,7 @@ class PaketCucianController extends Controller
      * @param  \App\Models\paket_cucian  $paket_cucian
      * @return \Illuminate\Http\Response
      */
-    public function update(Updatepaket_cucianRequest $request, paket_cucian $paket_cucian)
+    public function update(Updatepaket_cucianRequest $request, paketCucian $paket_cucian)
     {
         $ValidatedData = $request->validate([
 
@@ -90,11 +90,11 @@ class PaketCucianController extends Controller
         ]);
 
 
-        Paket_Cucian::where('id', $paket_cucian->id)
+        paketCucian::where('id', $paket_cucian->id)
                 ->update($ValidatedData);
 
 
-        return redirect('paket_cucian')->with('succes','Data Has Been Updated!');
+        return redirect(request()->segment(1).'/paket_cucian')->with('succes','Data Has Been Updated!');
     }
 
     /**
@@ -103,9 +103,9 @@ class PaketCucianController extends Controller
      * @param  \App\Models\paket_cucian  $paket_cucian
      * @return \Illuminate\Http\Response
      */
-    public function destroy(paket_cucian $paket_cucian)
+    public function destroy(paketCucian $paket_cucian)
     {
-        Paket_Cucian::destroy($paket_cucian->id);
+        PaketCucian::destroy($paket_cucian->id);
         return redirect('paket_cucian')->with('succes'.'Data Has Been Deleted!');
     }
 }

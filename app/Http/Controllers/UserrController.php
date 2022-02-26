@@ -40,8 +40,8 @@ class UserrController extends Controller
     public function store(StoreUserrRequest $request)
     {
         $validated = $request->validate([
-             'nama' => 'required',
-             'username' => 'required',
+             'name' => 'required',
+             'email' => 'required',
              'password' => 'required',
              'id_outlet' => 'required',
              'role' => 'required'
@@ -57,7 +57,7 @@ class UserrController extends Controller
      * @param  \App\Models\Userr  $Userr
      * @return \Illuminate\Http\Response
      */
-    public function show(Userr $Userr)
+    public function show(Userr $User)
     {
         //
     }
@@ -68,7 +68,8 @@ class UserrController extends Controller
      * @param  \App\Models\Userr  $Userr
      * @return \Illuminate\Http\Response
      */
-    public function edit(Userr $Userr)
+    public function edit(Userr $User)
+    
     {
         //
     }
@@ -80,23 +81,23 @@ class UserrController extends Controller
      * @param  \App\Models\Userr  $Userr
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserrRequest $request, Userr $Userr)
+    public function update(UpdateUserrRequest $request, Userr $userr)
     {
         $ValidatedData = $request->validate([
 
-            'nama' => 'required',
-            'username' => 'required',
+            'name' => 'required',
+            'email' => 'required',
             'password' => 'required',
             'id_outlet' => 'required',
             'role' => 'required'
         ]);
 
 
-        Userr::where('id', $Userr->id)
+        Userr::where('id', $userr->id)
                 ->update($ValidatedData);
 
 
-        return redirect('Userr')->with('succes','Data Has Been Updated!');
+        return redirect('userr')->with('succes','Data Has Been Updated!');
     }
 
     /**

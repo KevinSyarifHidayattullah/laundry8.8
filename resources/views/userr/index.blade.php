@@ -3,12 +3,12 @@
 <div class="right_col" role="main">
 <div class="card">
     <div class="card-header">
-        <h3 class="card-tittle">Data Pemasukan Paket Baru</h3>
-    </div>
+        <h2 class="card-title"><a class="fa fa-table" style="color: rgb(106, 117, 107)"></a> Data User</h2>
+   </div>
     <div class="card-body">
                 <button type="button" class="btn btn-warning" data-toggle="modal"
                     data-target="#formInputModal">
-                    <a class="fa fa-plus-square"> Tambah Paket</a>
+                    <a class="fa fa-plus-square"> Tambah User</a>
                 </button>
 
         <div style="margin-top:20px">

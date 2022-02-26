@@ -40,7 +40,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
-          <button type="sumbit" class="btn btn-warning" id="btn-sumbit">Tambah</button>
+          <button type="sumbit" class="btn btn-success" id="btn-sumbit">Tambah</button>
         </div>
       </div>
     </div>

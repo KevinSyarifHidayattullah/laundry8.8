@@ -47,7 +47,7 @@ class MemberController extends Controller
 
         $input = Member::create($validated);
 
-        if($input) return redirect('member')->with('success', 'Data berhasil diiinput');
+        if($input) return redirect(request()->segment(1).'/member')->with('success', 'Data berhasil diiinput');
     }
 
     /**
@@ -79,7 +79,7 @@ class MemberController extends Controller
 
         $update =$member->find($id)->update($request->all());
 
-        if($update) return redirect('member')->with('success', 'Data berhasil DI Upadate');
+        if($update) return redirect(request()->segment(1).'/member')->with('success', 'Data berhasil DI Upadate');
     }
 
     /**

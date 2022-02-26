@@ -17,7 +17,7 @@
             <td>{{ $o->tlp }}</td>
             <td>
                 @include('outlet.edit')
-                <form method="POST" action="{{ route('outlet.destroy', $o->id) }}" style="display:inline">
+                <form method="POST" action="/{{ request()->segment(1) }}/outlet/{{ $o->id }}" style="display:inline" onclick="return confirm('Yakin ingin dihapus?')">
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
                     <button type="submit" class="btn delete-user">

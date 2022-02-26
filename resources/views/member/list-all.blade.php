@@ -18,18 +18,9 @@
             <td>{{ $model->jenis_kelamin }}</td>
             <td>{{ $model->tlp }}</td>
             <td>
-                {{-- <button class="btn edit-member" data-toggle="modal" data-target="#formInputModal"
-                    data-mode="edit"
-                    data-id="{{$b->id}}"
-                    data-nama="{{ $b->nama }}"
-                    data-alamat="{{ $b->alamat }}"
-                    data-jenis_kelamin="{{ $b->jenis_kelamin }}"
-                    data-tlp="{{ $b->tlp }}"
-                >
-                <i class="fas fa-edit"></i>
-                </button> --}}
+                
                 @include('member.edit')
-                <form method="POST" action="{{ route('member.destroy', $model->id) }}" style="display:inline">
+                <form method="POST" action="{{ route('member.destroy', $model->id) }}" style="display:inline" onclick="return confirm('Yakin ingin dihapus?')">
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
                     <button type="submit" class="btn delete-user">

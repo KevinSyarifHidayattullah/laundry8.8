@@ -49,7 +49,7 @@ class OutletController extends Controller
 
          $input = Outlet::create($validated);
 
-         if($input) return redirect('outlet')->with('success', 'Data berhasil diiinput');    }
+         if($input) return redirect(request()->segment(1).'/outlet')->with('success', 'Data berhasil diiinput');    }
 
     /**
      * Display the specified resource.
@@ -93,7 +93,7 @@ class OutletController extends Controller
         Outlet::where('id', $outlet->id)
             ->update($validatedData);
 
-            return redirect('outlet')->with('succes'.'Data Has Been Updated!');
+            return redirect(request()->segment(1).'/outlet')->with('succes'.'Data Has Been Updated!');
     }
 
     /**
@@ -106,6 +106,6 @@ class OutletController extends Controller
     {
         outlet::destroy($outlet->id);
         $outlet->delete();
-       return redirect('outlet')->with('succes'.'Data Has Been Deleted!');
+       return redirect(request()->segment(1).'/outlet')->with('succes'.'Data Has Been Deleted!');
     }
 }

@@ -12,24 +12,26 @@
             @csrf @method('put')
             <div id="method"> </div>
             <div class="card-body">
-                    <div class="form-group">
-                        <label for="id_outlet"> ID OUTLET</label>
-                        <input type="text" class="form-control " value="{{ $p->id_outlet }}" id="id_outlet" placeholder="ID OUTLET" name="id_outlet">
-                    </div>
+              <div class="form-group">
+                <label for="id_outlet" class="container mt-3">ID OUTLET</label>
+                
+                <input type="text" class="form-control col-sm-5" id="id_outlet" name="id_outlet" value="{{ auth()->user()->id_outlet }}"
+                placeholder="nama-paket" readonly>
+              </div>
 
                     <div class="form-group">
-                        <label for="jenis">Jenis</label>
+                        <label class="container" for="jenis">Jenis</label>
                         <select class="form-control col-sm-5" id="jenis" name="jenis">
                             <option value="kiloan"> Kiloan</option>
                             <option value="selimut"> Selimut</option>
-                            <option value="bed cover"> Bed Cover</option>
+                            <option value="bed_cover"> Bed Cover</option>
                             <option value="kaos"> Kaos</option>
                             <option value="lainnya">Lainnya</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="nama_paket"> Nama Paket</label>
+                        <label class="container mt-3" for="nama_paket"> Nama Paket</label>
                         <input type="text" class="form-control " value="{{ $p->nama_paket }}" id="nama_paket" placeholder="Nama Paket" name="nama_paket">
                     </div>
 
@@ -40,8 +42,8 @@
             </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary" id="btn-submit">Submit</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+          <button type="submit" class="btn btn-success" id="btn-submit">Update</button>
         </div>
       </div>
     </div>

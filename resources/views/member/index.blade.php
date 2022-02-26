@@ -71,5 +71,5 @@
        </script>
 </div> 
 </div>
-@include('member/form')
+@include('member.form')
 @endsection

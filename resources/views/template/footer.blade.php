@@ -11,6 +11,7 @@
   
       <!-- jQuery -->
       <script src="{{asset('assets')}}/vendors/jquery/dist/jquery.min.js"></script>
+      <script src="{{ asset('assets') }}/vendors/datatables/js/jquery.datatables.js"></script>
       <!-- Bootstrap -->
      <script src="{{asset('assets')}}/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
       <!-- FastClick -->
@@ -22,5 +23,13 @@
   
       <!-- Custom Theme Scripts -->
       <script src="{{asset('assets')}}/build/js/custom.min.js"></script>
+      <script>
+        $(function(){
+          $('#succes-alert').fadeTo(2000,500).slideUp(500,function(){
+            $('#succes->alert')slideUp(500)
+          });
+        })
+      </script>
+      @stack('script')
     </body>
 </html>

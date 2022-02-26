@@ -1,6 +1,6 @@
   {{-- button --}}
-  <button type="submit" class="btn delete" data-toggle="modal"data-target="#edit{{ $o->id }}">
-    <i class="fa fa-edit " style="color: rgb(0, 153, 255)" ></i>
+  <button type="submit" class="btn btn-outline-success" data-toggle="modal"data-target="#edit{{ $o->id }}">
+    <i class="fa fa-edit"  ></i>
   </button> 
 
 <div class="modal fade" id="edit{{ $o->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -13,7 +13,7 @@
       </button>
     </div>
     <div class="modal-body">
-      <form method="post" action="{{ url('outlet/'.$o->id) }}">
+      <form method="post" action="/{{ request()->segment(1)}}/outlet/{{ $o->id }}">
         @csrf
         @method('PUT')
         <div id="method"></div>
@@ -45,8 +45,8 @@
           </div>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Exit</button>
-      <button type="sumbit" class="btn btn-primary" id="btn-sumbit">Update</button>
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+      <button type="sumbit" class="btn btn-success" id="btn-sumbit">Update</button>
     </div>
   </div>
 </div>

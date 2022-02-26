@@ -16,21 +16,18 @@
 
                   <div class="card-body">
                     <div class="form-group">
-                      <label for="nama"> nama</label>
+                      <label for="name">Name</label>
                       <div class="container">
-                      <input type="text" class="form-control col-sm-9" id="nama" name="nama">
+                      <input type="text" class="form-control col-sm-9" id="name" name="name">
                       </div>
                     </div>
                   </div>
-
-                  
-                 
                   
                   <div class="card-body">
                     <div class="form-group">
-                      <label for="username"> Username</label>
+                      <label for="email"> Email</label>
                       <div class="container">
-                      <input type="text" class="form-control col-sm-9" id="username" name="username">
+                      <input type="text" class="form-control col-sm-9" id="email" name="email">
                       </div>
                     </div>
                   </div>
@@ -77,7 +74,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" id="btn-submit">Submit</button>
+        <button type="submit" class="btn btn-warning" id="btn-submit">Submit</button>
       </div>
     </div>
   </div>

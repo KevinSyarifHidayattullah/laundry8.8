@@ -104,7 +104,7 @@
                         </div>
 
                         <div class="clearfix">
-                          <img src="{{asset('assets')}}/build/images/logo.png" alt="" class="mt-5">
+                          <img src="{{asset('assets')}}/build/images/logo.jpg" alt="" class="mt-5">
                         </div>
 
                         <div class="col-md-12">

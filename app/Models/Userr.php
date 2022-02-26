@@ -11,6 +11,6 @@ class Userr extends Model
 
     protected $primaryKey ='id';
     public $incrementing = true;
-    protected $table ='userr';
-    protected $fillable = ['nama','username','password','id_outlet','role'];
+    protected $table ='users';
+    protected $fillable = ['name','email','password','id_outlet','role'];
 }

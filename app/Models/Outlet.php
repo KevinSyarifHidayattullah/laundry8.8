@@ -14,4 +14,14 @@ class Outlet extends Model
     protected $table ='outlet';
     protected $fillable = ['nama','alamat','tlp'];
 
+    public function paket ()
+    {
+        return $this->hasMany(paketCucian::class, 'id_outlet');
+    }
+
+    public function user()
+    {
+        return $this->hasMany(User::class, 'id_outlet');
+    }
+
 }

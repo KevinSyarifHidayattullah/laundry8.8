@@ -16,8 +16,8 @@
                 </div>
             </div>
           <div style="margin-top:20px">
-            @if (session('success'))
-            <div class="alert alert-success" role="alert" id="success-alert">
+            @if (session()->has('success'))
+            <div class="alert alert-success" role="alert" id="succes-alert" role="alert">
                 {{ session('success') }}
             <button type="button" class="close" data-dissmiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>

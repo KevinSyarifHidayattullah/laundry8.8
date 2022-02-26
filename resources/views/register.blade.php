@@ -46,6 +46,18 @@
                         <label for=""><strong>Konfirmasi Password</strong></label>
                         <input type="password" name="password_confirmation" class="form-control" placeholder="Password">
                     </div>
+                    <div class="form-group">
+                        <label for=""><strong>id_outlet</strong></label>
+                        <input type="id_outlet" name="id_outlet" class="form-control" placeholder="id_outlet">
+                    </div>
+                    <div class="form-group">
+                        <label for=""><strong>role</strong></label>
+                        <select type="role" name="role" class="form-control" placeholder="role">
+                            <option value="admin">admin</option>
+                            <option value="kasir">kasir</option>
+                            <option value="owner">owner</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary btn-block">Register</button>

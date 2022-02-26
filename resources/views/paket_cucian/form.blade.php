@@ -13,42 +13,38 @@
             <div id="method"> </div>
             <div class="card-body">
                     <div class="form-group">
-                      <label for="id_outlet">ID OUTLET</label>
+                      <label for="id_outlet" class="container mt-3">ID OUTLET</label>
                       
-                      <select class="form-control col-sm-5" id="id_outlet" name="id_outlet">
-                        @foreach ($outlets as $o)
-                        <option value="{{ $o->id }}">{{ $o->nama }}</option>
-                      @endforeach
-                    </select>
+                      <input type="text" class="form-control col-sm-5" id="id_outlet" name="id_outlet" value="{{ auth()->user()->id_outlet }}"
+                      placeholder="nama-paket" readonly>
                     </div>
 
                     
                     <div class="form-group">
-                        <label for="jenis">Jenis</label>
+                        <label for="jenis" class="container mt-3">Jenis</label>
                         <select class="form-control col-sm-5" id="jenis" name="jenis">
                             <option value="kiloan"> Kiloan</option>
                             <option value="selimut"> Selimut</option>
-                            <option value="bed cover"> Bed Cover</option>
+                            <option value="bed_cover"> Bed Cover</option>
                             <option value="kaos"> Kaos</option>
                             <option value="lainnya">Lainnya</option>
                         </select>
                     </div>
                     
                     <div class="form-group">
-                        <label for="nama_paket"> Nama Paket</label>
-                        <input type="text" class="form-control col-sm-10" id="nama_paket" placeholder="Nama Paket" name="nama_paket">
+                        <label class="container mt-3" for="nama_paket"> Nama Paket</label>
+                        <input type="text" class="form-control col-sm-10" id="nama_paket" placeholder="" name="nama_paket">
                     </div>
 
-
-                     <div class="form-group">
-                        <label for="harga"> Harga</label>
-                        <input type="number" class="form-control col-sm-10" id="tlp" placeholder="Harga" name="harga">
+                    <div class="form-group">
+                        <label for="harga" class="container mt-3"> Harga</label>
+                        <input type="number" class="form-control col-sm-10" id="tlp" placeholder="" name="harga">
                     </div>
             </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary" id="btn-submit">Submit</button>
+          <button type="button" class="btn btn btn-secondary" data-dismiss="modal">Kembali</button>
+          <button type="submit" class="btn btn btn-success" id="btn-submit">Tambah</button>
         </div>
       </div>
     </div>

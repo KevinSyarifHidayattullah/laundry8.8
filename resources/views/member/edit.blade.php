@@ -1,6 +1,6 @@
   {{-- button --}}
-  <button type="submit" class="btn delete" data-toggle="modal"data-target="#edit{{ $model->id }}">
-    <i class="fa fa-edit " style="color: rgb(0, 153, 255)" ></i>
+  <button type="submit" class="btn btn-outline-success" data-toggle="modal"data-target="#edit{{ $model->id }}">
+    <i class="fa fa-edit "></i>
   </button> 
   
   <div class="modal fade" id="edit{{ $model->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -57,8 +57,8 @@
               </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Exit</button>
-          <button type="sumbit" class="btn btn-primary" id="btn-sumbit">Update</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+          <button type="sumbit" class="btn btn-success" id="btn-sumbit">Update</button>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 <table id="tbl-paket_cucian" class="table table-bordered table-hover">
     <thead>
         <tr>
-            <th>ID OUTLET</th>
+            <th>Id Outlet</th>
             <th>Nama Paket</th>
             <th>Jenis Cucian</th>
             <th>Harga</th>
@@ -17,8 +17,8 @@
             <td>{{ $p->harga }}</td>
             <td>
 
-                <button type="submit" class="btn btn-outline-primary" data-toggle="modal" data-target="#formInputModal{{ $p->id }}">
-                    <i class="fa fa-edit " style="color: rgb(0, 153, 255)" ></i>
+                <button type="submit" class="btn btn-outline-success" data-toggle="modal" data-target="#formInputModal{{ $p->id }}">
+                    <i class="fa fa-edit " style="color-success"></i>
                 </button>
 
 
