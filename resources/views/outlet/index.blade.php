@@ -11,9 +11,16 @@
                     data-target="#formInputModal">
                     <a class="fa fa-plus-square"> Tambah Outlet</a>
                 </button>
-                <div>
-                    @include('outlet/list-all')
-                </div>
+
+                <a href="{{ route('export-outlet') }}" class="btn btn-success"> 
+                    <li class=" fa fa-file-excel-o"></li>  Export
+                </a>
+
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formImport" >
+                    <li class="fa fa-medkit"></li> Import
+                </button>
+
+                @include('outlet/list-all')
             </div>
           <div style="margin-top:20px">
             @if (session()->has('success'))

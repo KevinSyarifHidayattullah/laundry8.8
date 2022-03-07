@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Member;
 use Illuminate\Http\Request;
+use App\Export\MemberExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MemberController extends Controller
 {
@@ -68,19 +70,19 @@ class MemberController extends Controller
      * @param  \Illuminate\Http\Request;
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request , Member $member ,$id)
-    {
-        $validated = $request->validate([
-            'nama' => 'required',
-            'alamat' => 'required',
-            'jenis_kelamin' => 'required',
-            'tlp' => 'required',
-        ]);
+    // public function edit(Request $request , Member $member ,$id)
+    // {
+    //     $validated = $request->validate([
+    //         'nama' => 'required',
+    //         'alamat' => 'required',
+    //         'jenis_kelamin' => 'required',
+    //         'tlp' => 'required',
+    //     ]);
 
-        $update =$member->find($id)->update($request->all());
+    //     $update =$member->find($id)->update($request->all());
 
-        if($update) return redirect(request()->segment(1).'/member')->with('success', 'Data berhasil DI Upadate');
-    }
+    //     return redirect(request()->segment(1).'/member')->with('succes'.'Data Has Been Updated!');
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -98,7 +100,7 @@ class MemberController extends Controller
         $model->tlp = $request->tlp;
         $model->save();
 
-        return redirect('member');
+        return redirect(request()->segment(1).'/member')->with('success', 'Data berhasil DiUpdate');
     }
 
     /**
@@ -111,6 +113,12 @@ class MemberController extends Controller
     {
         member::find($id)->delete();
 
-        return redirect('member')->with('success', 'Member deleted');
+        return redirect(request()->segment(1).'/member')->with('success', 'Member deleted');
+    }
+
+    public function exportData() 
+    {
+        $date = date('Y-m-d');
+        return Excel::download(new MemberExport, $date. 'member.xlsx');
     }
 }

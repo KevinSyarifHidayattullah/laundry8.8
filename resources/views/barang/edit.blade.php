@@ -13,7 +13,7 @@
       </button>
     </div>
     <div class="modal-body">
-      <form method="post" action="{{ url('barang/'.$o->id) }}">
+      <form method="post" action="/{{ request()->segment(1)}}/barang/{{ $o->id }}">
         @csrf
         @method('PUT')
         <div id="method"></div>

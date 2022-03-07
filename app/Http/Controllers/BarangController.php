@@ -5,6 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use App\Http\Requests\StoreBarangRequest;
 use App\Http\Requests\UpdateBarangRequest;
+use Illuminate\Http\Request;
+use App\Imports\BarangImport;
+use App\Export\BarangExport;
+// use GuzzleHttp\Psr7\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
 
 class BarangController extends Controller
 {
@@ -51,7 +57,7 @@ class BarangController extends Controller
 
          $input = Barang::create($validated);
 
-         if($input) return redirect('barang')->with('success', 'Data berhasil diiinput');    }
+         if($input) return redirect(request()->segment(1).'/barang')->with('success', 'Data berhasil diiinput');    }
 
     /**
      * Display the specified resource.
@@ -97,7 +103,7 @@ class BarangController extends Controller
         Barang::where('id', $barang->id)
             ->update($validatedData);
 
-            return redirect('barang')->with('succes'.'Data Has Been Updated!');
+            return redirect(request()->segment(1).'/barang')->with('success','Data Berhasil Di Update');
     }
 
     /**
@@ -111,5 +117,23 @@ class BarangController extends Controller
         Barang::destroy($barang->id);
         $barang->delete();
        return redirect('barang')->with('succes'.'Data Has Been Deleted!');
+    }
+
+    public function ImportData(Request $request ) 
+    {
+        $request->validate([
+            'file' => 'file|mimes:xlsx,xls,xlsm,xlsb'
+        ]);
+
+        if($request){
+            Excel::import(new BarangImport, $request->file('file'));
+        }
+        else{
+            return back()->withErrors([
+                'file'=>'file bukan excel'
+            ]);
+        }
+    
+        return Back()->with('success','berhasil di import');
     }
 }

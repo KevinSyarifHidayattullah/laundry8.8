@@ -6,6 +6,9 @@ use App\Models\Userr;
 use App\Http\Requests\StoreUserrRequest;
 use App\Http\Requests\UpdateUserrRequest;
 use App\Models\outlet;
+use App\Imports\UserrImport;
+use App\Export\UserrExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserrController extends Controller
 {
@@ -48,7 +51,7 @@ class UserrController extends Controller
          ]);
 
         $input = Userr::create($validated);
-        if($input)return redirect('userr')->with('succes','Data berhasil diinput');
+        if($input)return redirect(request()->segment(1).'/userr')->with('success','Data berhasil diinput');
     }
 
     /**
@@ -87,7 +90,6 @@ class UserrController extends Controller
 
             'name' => 'required',
             'email' => 'required',
-            'password' => 'required',
             'id_outlet' => 'required',
             'role' => 'required'
         ]);
@@ -97,7 +99,7 @@ class UserrController extends Controller
                 ->update($ValidatedData);
 
 
-        return redirect('userr')->with('succes','Data Has Been Updated!');
+        return redirect(request()->segment(1).'/userr')->with('succes'.'Data Has Been Updated!');
     }
 
     /**
@@ -109,6 +111,12 @@ class UserrController extends Controller
     public function destroy(userr $userr)
     {
         Userr::destroy($userr->id);
-        return redirect('userr')->with('succes'.'Data Has Been Deleted!');
+        return redirect(request()->segment(1).'/userr')->with('success'.'Data Has Been Deleted!');
+    }
+
+    public function exportData() 
+    {
+        $date = date('Y-m-d');
+        return Excel::download(new UserrExport, $date. '_user.xlsx');
     }
 }

@@ -8,7 +8,7 @@
         </button>
       </div>
       <div class="modal-body">
-          <form method="POST" action="{{ url('userr/'.$u->id) }}">
+          <form method="POST" action="/{{ request()->segment(1)}}/userr/{{ $u->id }}">
           @csrf @method('put')
           <div id="method"> </div>
           <div class="card-body">

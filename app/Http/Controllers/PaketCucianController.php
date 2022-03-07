@@ -6,6 +6,9 @@ use App\Models\paketCucian;
 use App\Http\Requests\Storepaket_cucianRequest;
 use App\Http\Requests\Updatepaket_cucianRequest;
 use App\Models\outlet;
+use App\Exports\PaketCucianExport;
+use App\Imports\PaketCucianImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PaketCucianController extends Controller
 {
@@ -44,10 +47,11 @@ class PaketCucianController extends Controller
              'nama_paket' => 'required',
              'jenis' => 'required',
              'harga' => 'required'
-         ]);
+        ]);
 
         $input = paketCucian::create($validated);
-        if($input)return redirect('paket_cucian')->with('succes','Data berhasil diinput');
+
+        if($input) return redirect(request()->segment(1).'/paket_cucian')->with('succes','Data berhasil diinput');
     }
 
     /**
@@ -94,7 +98,7 @@ class PaketCucianController extends Controller
                 ->update($ValidatedData);
 
 
-        return redirect(request()->segment(1).'/paket_cucian')->with('succes','Data Has Been Updated!');
+                return redirect(request()->segment(1).'/paket_cucian')->with('success'.'Data Berhasil DiUpdate');
     }
 
     /**
@@ -106,6 +110,24 @@ class PaketCucianController extends Controller
     public function destroy(paketCucian $paket_cucian)
     {
         PaketCucian::destroy($paket_cucian->id);
-        return redirect('paket_cucian')->with('succes'.'Data Has Been Deleted!');
+        return redirect(request()->segment(1).'/paket_cucian')->with('success'.'Data Has Been Deleted!');
+    }
+
+    public function exportData(){
+        $date = date('Y-m-d');
+        return Excel::download(new PaketCucianExport, $date. '_paketCucian.xlsx');
+    }
+
+    // public function importData(){
+    //     Excel::import(new PaketCucianImport, request()->file('import'));
+
+    //      return redirect(request()->segment(1).'/paket_cucian')->with('success', 'Import data berhasil');
+    // }
+
+    public function import(){
+        request()->file('file')->move('temp', request()->file('file')->getClientOriginalName());
+        Excel::import(new paketCucianImport, public_path('temp/' . request()->file('file')->getClientOriginalName()));
+
+        return redirect()->back()->with('success', 'All good!');
     }
 }

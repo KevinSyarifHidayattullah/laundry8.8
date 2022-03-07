@@ -10,6 +10,11 @@ use App\Http\Requests\StoreTransaksiRequest;
 use App\Http\Requests\UpdateTransaksiRequest;
 use Illuminate\Http\Request;
 
+//inport & export
+use App\Imports\UserrImport;
+use App\Export\TransaksiExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 
 
@@ -110,7 +115,25 @@ class TransaksiController extends Controller
      */
     public function update(UpdateTransaksiRequest $request, Transaksi $transaksi)
     {
-        //
+      //validasi
+      $validated = $request->validate([
+             
+        'id_outlet' => 'required',
+        'kode_invoice' => 'required',
+         'id_member' => 'required',
+         'tgl   ' => 'required',
+         'batas_waktu' => 'required',
+         'tgl_bayar' => 'required',
+         'biaya_tambahan' => 'required',
+         'diskon' => 'required',
+         'pajak' => 'required',
+         'dibayar' => 'required',
+         'id_user' => 'required',
+     ]);
+
+     $input = Transaksi::create($validated);
+
+     if($input) return redirect(request()->segment(1).'/transaksi')->with('success', 'Data berhasil diiinput'); 
     }
 
     /**
@@ -123,11 +146,20 @@ class TransaksiController extends Controller
     {
         //
     }
+
+    
     private function generateKodeInvoice(){
         $last = Transaksi::orderBy('id','desc')->first();
         $last = ($last == null?1:$last->id + 1);
         $kode = sprintf('TKI'.date('Ymd').'%06d', $last);
 
         return $kode;
+    }
+
+
+    public function exportData() 
+    {
+        $date = date('Y-m-d');
+        return Excel::download(new TransaksiExport, $date. '_transaksi.xlsx');
     }
 }

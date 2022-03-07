@@ -3,8 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\outlet;
+use App\Imports\OutletImport;
+use App\Exports\OutletExport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StoreoutletRequest;
 use App\Http\Requests\UpdateoutletRequest;
+use App\Http\Controllers\Controller;
+
+// use Maatwebsite\Excel\Facades\Excel;
 
 class OutletController extends Controller
 {
@@ -93,7 +99,7 @@ class OutletController extends Controller
         Outlet::where('id', $outlet->id)
             ->update($validatedData);
 
-            return redirect(request()->segment(1).'/outlet')->with('succes'.'Data Has Been Updated!');
+            return redirect(request()->segment(1).'/outlet')->with('success','Data Berhasil DiUpdate');
     }
 
     /**
@@ -106,6 +112,18 @@ class OutletController extends Controller
     {
         outlet::destroy($outlet->id);
         $outlet->delete();
-       return redirect(request()->segment(1).'/outlet')->with('succes'.'Data Has Been Deleted!');
+       return redirect(request()->segment(1).'/outlet')->with('success','Data Berhasil Di Hapus!');
+    }
+
+    public function importData(){
+        Excel::import(new OutletImport, request()->file('import'));
+        
+        return redirect(request()->segment(1).'/outlet')->with('success', 'All good!');
+    }
+
+    public function exportData() 
+    {
+        $date = date('Y-m-d');
+        return Excel::download(new OutletExport, $date. '_outlet.xlsx');
     }
 }

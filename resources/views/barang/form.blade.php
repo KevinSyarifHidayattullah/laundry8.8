@@ -33,10 +33,10 @@
                 <div class="form-group">
                   <label class="mt-2" for="qty">qty</label>
                   <div class="container">
-                  <input type="text" class="form-control col-sm-9" id="qty" placeholder="" name="qty">
+                  <input type="number" class="form-control col-sm-9" id="qty" placeholder="" name="qty">
                   </div>
                 </div>
-              </div>
+              </div>  
 
               <div class="card-body">
                 <div class="form-group">

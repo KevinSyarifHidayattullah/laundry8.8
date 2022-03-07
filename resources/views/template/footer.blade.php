@@ -23,13 +23,13 @@
   
       <!-- Custom Theme Scripts -->
       <script src="{{asset('assets')}}/build/js/custom.min.js"></script>
-      <script>
+      {{-- <script>
         $(function(){
           $('#succes-alert').fadeTo(2000,500).slideUp(500,function(){
             $('#succes->alert')slideUp(500)
           });
         })
-      </script>
+      </script> --}}
       @stack('script')
     </body>
 </html>

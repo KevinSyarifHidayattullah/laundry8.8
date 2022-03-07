@@ -1,6 +1,13 @@
 <div class="collapse" id="dataLaundry">
   <div class="card-body">
-    <h4>Transaksi Data</h4>
+    <h4>Transaksi Data
+    <a href="{{ route('export-transaksi') }}" class="btn btn-success"> 
+        <li class=" fa fa-file-excel-o"></li>  Export
+    </a>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formImport" >
+        <li class="fa fa-medkit"></li> Import
+    </button>
+    </h4>
     <table id="tbl-transaksi" class="table table-bordered table-hover mt-3">
       <thead>
           <tr>
@@ -8,6 +15,7 @@
               <th>id outlet</th>
               <th>kode invoice</th>
               <th>id member</th>
+              <th>tgl</th>
               <th>batas waktu</th>
               <th>tgl bayar</th>
               <th>biaya tambahan</th>
@@ -25,6 +33,7 @@
               <td>{{ $o->id_outlet }}</td>
               <td>{{ $o->kode_invoice }}</td>
               <td>{{ $o->id_member }}</td>
+              <td>{{ $o->tgl }}</td>
               <td>{{ $o->batas_waktu }}</td>
               <td>{{ $o->tgl_bayar }}</td>
               <td>{{ $o->biaya_tambahan }}</td>

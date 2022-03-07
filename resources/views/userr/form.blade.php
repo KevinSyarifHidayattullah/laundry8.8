@@ -37,7 +37,7 @@
                     <div class="form-group">
                       <label for="password"> password</label>
                       <div class="container">
-                      <input type="text" class="form-control col-sm-9" id="password" name="password">
+                      <input type="password" class="form-control col-sm-9" id="password" name="password">
                       </div>
                     </div>
                   </div>

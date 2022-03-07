@@ -16,7 +16,7 @@ class DetailTransaksi extends Model
 
     public function transaksi()
     {
-        return $this->belongsTo(trasaksi::class, 'id_transaksi');
+        return $this->belongsTo(transaksi::class, 'id_transaksi');
     }
     public function paketCucian()
     {

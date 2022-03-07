@@ -11,6 +11,14 @@
                     data-target="#formInputModal">
                     <a class="fa fa-plus-square"> Tambah Member</a>
                 </button>
+                <a href="{{ route('export-member') }}" class="btn btn-success"> 
+                    <li class=" fa fa-file-excel"></li>Export
+                </a>
+
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formImport" >
+                    <li class="fa fa-medkit"></li> Import
+                </button>
+
                 <div>
                     @include('member/list-all')
                 </div>

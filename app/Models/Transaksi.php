@@ -13,8 +13,8 @@ class Transaksi extends Model
     protected $table ='transaksi';
     protected $guarded = ['id','created_at','update_at'];
 
-    public function member()
-    {
-        return $this->belongsTo(Member::class, 'id_member');
-    }
+        public function member()
+        {
+            return $this->belongsTo(Member::class, 'id_member');
+        }
 }

@@ -11,6 +11,45 @@
                     data-target="#formInputModal">
                     <a class="fa fa-plus-square"> Tambah Barang</a>
                 </button>
+
+                <a href="{{ route('export-barang') }}" class="btn btn-success"> 
+                    <li class=" fa fa-file-excel"></li>Export
+                </a>
+
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formImport" >
+                    <li class="fa fa-medkit"></li> Import
+                </button>
+
+                <div class="modal fade" id="formImport" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel"> Import Data Paket</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <form method="POST" action="{{ route('import-barang') }}" enctype="multopart/form-data">
+                            @csrf
+                              <div class="card-body">
+                                <div class="form-grup">
+                                  <label for="jenis">file excel</label>
+                                  <input type="file" name="import" id="import">
+                                </div>
+                              </div>
+                          
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-primary">Upload</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                  </div>
+                
+
                 <div>
                     @include('barang/list-all')
                 </div>

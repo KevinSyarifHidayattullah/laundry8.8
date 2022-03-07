@@ -7,25 +7,14 @@
                   </li>
                   <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="/paket_cucian">Paket</a></li>
-                      <li><a href="/outlet">Outlet</a></li>
-                      {{-- <li><a href="/member">Member</a></li>
-                      <li><a href="/userr">User</a></li> --}}
+                      {{-- <li><a href="/paket_cucian">Paket</a></li> --}}
+                      {{-- <li><a href="/outlet">Outlet</a></li> --}}
+                      <li><a href="/k/member">Member</a></li>
+                      <li><a href="/k/laporan">laporan</a></li>
                     </ul>
                   </li>
 
-                  <li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="general_elements.html">General Elements</a></li>
-                      <li><a href="media_gallery.html">Media Gallery</a></li>
-                      <li><a href="typography.html">Typography</a></li>
-                      <li><a href="icons.html">Icons</a></li>
-                      <li><a href="glyphicons.html">Glyphicons</a></li>
-                      <li><a href="widgets.html">Widgets</a></li>
-                      <li><a href="invoice.html">Invoice</a></li>
-                      <li><a href="inbox.html">Inbox</a></li>
-                      <li><a href="calendar.html">Calendar</a></li>
-                    </ul>
+                  <li><a href="/k/transaksi"><i class="fa fa-money"></i> Transaksi</a>
                   </li>
                   <li><a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">

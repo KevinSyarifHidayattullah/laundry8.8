@@ -67,7 +67,7 @@
 @push('script')
 <script>
     // Script untuk# Menu data dan form transaksi
-    $('#dataLaundry').collapse('show')
+    // $('#dataLaundry').collapse('show')
 
     $('#dataLaundry').on('show.bs.collapse', function(){
         $('#formLaundry').collapse('hide');
